@@ -24,8 +24,9 @@ jobs:
           emacs index.org --batch -f org-html-export-to-html --kill
           emacs references.org --batch -f org-html-export-to-html --kill
           git rev-parse HEAD > version.html
+          ls -lsa
           mkdir html
-          mv * html/
+          mv * html/ || true
 
       - name: Pushes html files into a branch html
         uses: s0/git-publish-subdir-action@develop
