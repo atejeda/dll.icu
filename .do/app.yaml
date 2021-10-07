@@ -1,0 +1,8 @@
+name: dll.icu 
+static_sites:
+- environment_slug: html
+  github:
+    branch: html
+    deploy_on_push: true
+    repo: atjeda/dll.icu
+  name: dll.icu 
