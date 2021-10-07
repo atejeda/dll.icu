@@ -1,5 +1,0 @@
-* References Index
-
-** Google Cloud Platform
-** Vim
-** Emacs
