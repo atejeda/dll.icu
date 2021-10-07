@@ -24,7 +24,6 @@ jobs:
           emacs index.org --batch -f org-html-export-to-html --kill
           emacs references.org --batch -f org-html-export-to-html --kill
           echo ${{ steps.tag.outputs.tag }} > version.html
-          rm *~ *.org
 
       - name: push
         uses: s0/git-publish-subdir-action@develop
