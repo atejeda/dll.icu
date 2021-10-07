@@ -21,8 +21,7 @@ jobs:
 
       - name: Generate html files from orgmode
         run: |
-          emacs index.org --batch -f org-html-export-to-html --kill
-          emacs references.org --batch -f org-html-export-to-html --kill
+          make clean all
           git rev-parse HEAD > version.html
           ls -lsa
           mkdir html
