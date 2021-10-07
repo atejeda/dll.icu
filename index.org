@@ -1,0 +1,21 @@
+#+OPTIONS: toc:nil
+#+OPTIONS: num:nil
+#+OPTIONS: html-postamble:nil
+#+HTML_HEAD: <style type="text/css">body{ max-width:700px; }</style>
+#+OPTIONS: ^:{}
+
+* dll.icu
+
+A bunch of snippets and relevant info to be used as reference.
+
+#+NAME: example
+#+BEGIN_SRC bash
+#!/usr/bin/env bash
+01234567890123456789012345678901234567890123456789012345678901234567890123456789
+#+END_SRC
+
+References
+
+[[file:references.org][Useful references]]
+
+// emacs + orgmode
