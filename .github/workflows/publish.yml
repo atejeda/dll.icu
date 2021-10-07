@@ -19,13 +19,13 @@ jobs:
           version: 27.2
       - uses: tenhaus/get-release-or-tag@v2
 
-      - name: build
+      - name: Generate html files from orgmode
         run: |
           emacs index.org --batch -f org-html-export-to-html --kill
           emacs references.org --batch -f org-html-export-to-html --kill
           echo ${{ steps.tag.outputs.tag }} > version.html
 
-      - name: push
+      - name: Pushes html files into a branch html
         uses: s0/git-publish-subdir-action@develop
         env:
           REPO: self
