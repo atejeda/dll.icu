@@ -1,0 +1,18 @@
+#+OPTIONS: num:nil
+#+OPTIONS: html-postamble:nil
+#+HTML_HEAD: <style type="text/css">body{ max-width:700px; }</style>
+#+OPTIONS: ^:{}
+
+#+LINK_UP: 
+#+LINK_HOME: index.html
+
+#+TITLE: dll.icu / knowledge base
+
+* [[file:archlinux.org][Arch Linux]]
+
+  My personal notes about arch, xmonad, xmobar, etc.
+
+* [[file:googlecloud.org][Google Cloud Platform]]
+
+  Not everything that exists on GCP, but useful snippets and whatnot related to
+  the platform.

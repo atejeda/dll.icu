@@ -1,0 +1,11 @@
+#+OPTIONS: num:nil
+#+OPTIONS: html-postamble:nil
+#+HTML_HEAD: <style type="text/css">body{ max-width:700px; }</style>
+#+OPTIONS: ^:{}
+
+#+LINK_UP: 
+#+LINK_HOME: index.html
+
+#+TITLE: dll.icu / knowledge base / Arch Linux
+
+
