@@ -4,8 +4,6 @@
 #+HTML_HEAD: <style type="text/css">body{ max-width:700px; }</style>
 #+OPTIONS: ^:{}
 
-#+TITLE: dll.icu / personal base knowledge
-
 * dll.icu
 
 A bunch of snippets and relevant info to be used as reference.
@@ -16,8 +14,8 @@ A bunch of snippets and relevant info to be used as reference.
 01234567890123456789012345678901234567890123456789012345678901234567890123456789
 #+END_SRC
 
-References
+* Index
 
-[[file:references.org][Useful references]]
+- [[file:knowledgebase.org][Knowledge Base]] : Bunch of notes intended to be a knowledge base.
 
-// emacs + orgmode
+// emacs + orgmode ... aliens are real
