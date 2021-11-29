@@ -2,12 +2,12 @@
 
 #+BEGIN_export html
 <hr/>
-<div id="code0"></div>
+<div id="download_this_page"></div>
 <script type="text/javascript">
 var url = window.location;
-var base = url.protocol +"//" + url.host + "/" +
+var base = url.protocol +"//" + url.host + "" +
  url.pathname.replace('.html', '.org');
-document.getElementById('code0').innerHTML = `
+document.getElementById('download_this_page').innerHTML = `
 <a href="${base}">source: ${url.pathname.replace('.html', '.org')}</a>
 `
 </script>
