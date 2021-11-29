@@ -3,7 +3,14 @@
 ORGFILES=$(wildcard *.org)
 HTMLFILES=$(patsubst %.org,%.html,$(ORGFILES))
 
-.PHONY: all generate clean
+.PHONY: default touch all generate clean
+
+default: touch all
+	@echo "$@ ... done"
+
+touch:
+	@$(shell find . -type f -name '*.org' -exec touch {} +)
+	@echo "$@ ... done"
 
 all: generate
 	@echo "$@ ... done"

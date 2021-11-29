@@ -1,0 +1,41 @@
+body {
+    max-width: 700px;
+}
+
+#org-div-home-and-up {
+    text-align: left;
+    font-size: 90%;
+    white-space: nowrap;
+}
+
+.title {
+    text-align: left;
+    margin-bottom: .2em;
+}
+
+pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    padding-top: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+}
+
+hr {
+    border: none;
+    border-top: 3px double #333;
+    color: #333;
+    overflow: visible;
+    text-align: center;
+    height: 5px;
+}
+
+hr:after {
+    background: #fff;
+    content: '§';
+    padding: 0 4px;
+    position: relative;
+    top: -13px;
+}

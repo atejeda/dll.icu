@@ -1,0 +1,117 @@
+# + OPTIONS: title:nil
+# + OPTIONS: toc:nil
+#+OPTIONS: num:nil
+#+OPTIONS: html-postamble:nil
+#+OPTIONS: ^:{}
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style.css" />
+
+#+HTML_LINK_UP: knowledgebase.html
+#+HTML_LINK_HOME: index.html
+
+#+TITLE: > python
+#+DESCRIPTION: python notes
+
+#+ATTR_HTML: :src python.pyenv.sh
+
+Notes about python, snippets, configurations, etc.
+
+** pyenv setup
+
+This snippet will install python 3.8.2 by default, download the file from
+[[file:python.pyenv.sh]] to have an automated installation on your environment,
+one can change the version to install by setting /INSTALL_PYTHON_VERSION=3.7.2/
+before executing the script.
+
+Below, the source code of the pyenv installer script, compatible with
+gnu​linux and macos. This script will build the specified python by using pyenv
+and setup a profile written in /$HOME​/.pyenv.profile/, the instruction to load
+this profile will be tail appended to the /.bashrc/ profile.
+   
+#+include: "python.pyenv.sh" src bash
+
+Also, by executing the curl command below, one can install pyenv unattended,
+be aware of the needed packages though.
+
+#+BEGIN_export html
+<div class="org-src-container">
+<pre id="code0" class="src src-bash"></pre>
+</div>
+<script type="text/javascript">
+var url = window.location;
+var base = url.protocol +"//" + url.host + "/" +
+ url.pathname.split('/').slice(0, -1).join('/');
+document.getElementById('code0').textContent =`# example
+INSTALL_PYTHON_VERSION=3.7.2
+curl \\
+ ${base}python.pyenv.sh \\
+ | bash
+`
+</script>
+#+END_export
+
+Refer to the OS flavor to install the required packages to build python, the
+script should be compatible with most gnulinux and macos systems.
+
+For more documentation, refer to [[https://github.com/pyenv/pyenv]].
+
+** pyenv setup (packages)
+
+*Debian ​/ Ubuntu*:
+
+#+include: "python.pyenv.req.debian.sh" src bash
+
+#+BEGIN_export html
+<div class="org-src-container">
+<pre class="src src-bash">
+<div id="code1"></div>
+</pre>
+</div>
+<script type="text/javascript">
+var url = window.location;
+var base = url.protocol + "//" + url.host + "/" +
+ url.pathname.split('/').slice(0, -1).join('/');
+document.getElementById('code1').textContent =`# example
+curl \\
+ ${base}python.pyenv.req.debian.sh \\
+ | bash
+`
+</script>
+#+END_export
+
+
+*Arch*:
+
+If you are using this distro, you probably don't need too much info, but use
+this snippet as a hint.
+
+#+include: "python.pyenv.req.arch.sh" src bash
+
+#+BEGIN_export html
+<div class="org-src-container">
+<pre class="src src-bash">
+<div id="code2"></div>
+</pre>
+</div>
+<script type="text/javascript">
+var url = window.location;
+var base = url.protocol + "//" + url.host + "/" +
+ url.pathname.split('/').slice(0, -1).join('/');
+document.getElementById('code2').textContent =`# example
+curl \\
+ ${base}python.pyenv.req.arch.sh \\
+ | bash
+`
+</script>
+#+END_export
+
+
+*MacOs*:
+
+homebrew is your best friend (after installing xcode)
+
+*Others*:
+
+Like RHEL derivates and other weird distros, you are alone my friend, but
+look for similar packages like the ones required by Debian and friends.
+
+#+include: footer.org

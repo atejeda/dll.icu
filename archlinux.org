@@ -1,11 +1,16 @@
+# + OPTIONS: title:nil
+# + OPTIONS: toc:nil
 #+OPTIONS: num:nil
 #+OPTIONS: html-postamble:nil
-#+HTML_HEAD: <style type="text/css">body{ max-width:700px; }</style>
 #+OPTIONS: ^:{}
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style.css" />
 
-#+LINK_UP: 
-#+LINK_HOME: index.html
+#+HTML_LINK_UP: knowledgebase.html
+#+HTML_LINK_HOME: index.html
 
-#+TITLE: dll.icu / knowledge base / Arch Linux
+#+TITLE: > archlinux
+#+DESCRIPTION: archlinux notes
 
+Work in progress.
 
+#+include: footer.org

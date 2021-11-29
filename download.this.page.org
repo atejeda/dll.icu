@@ -1,0 +1,14 @@
+#+SELECT_TAGS: noexport
+
+#+BEGIN_export html
+<hr/>
+<div id="code0"></div>
+<script type="text/javascript">
+var url = window.location;
+var base = url.protocol +"//" + url.host + "/" +
+ url.pathname.replace('.html', '.org');
+document.getElementById('code0').innerHTML = `
+<a href="${base}">source: ${url.pathname.replace('.html', '.org')}</a>
+`
+</script>
+#+END_export

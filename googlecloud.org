@@ -1,12 +1,143 @@
+# + OPTIONS: title:nil
+# + OPTIONS: toc:nil
 #+OPTIONS: num:nil
 #+OPTIONS: html-postamble:nil
-#+HTML_HEAD: <style type="text/css">body{ max-width:700px; }</style>
 #+OPTIONS: ^:{}
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style.css" />
 
-#+LINK_UP: 
-#+LINK_HOME: index.html
+#+HTML_LINK_UP: knowledgebase.html
+#+HTML_LINK_HOME: index.html
 
-#+TITLE: dll.icu / knowledge base / Google Cloud Platform
+#+TITLE: > google cloud platform
+#+DESCRIPTION: google cloud platform notes
 
-* Google Cloud Platform
+Not everything that exists on GCP, but useful snippets and whatnot related to
+the platform.
 
+** Accounts and projects
+
+#+NAME: example
+#+BEGIN_SRC bash
+gcloud auth list
+gcloud config set account ACCOUNT
+
+gcloud projects list
+gcloud config set project PROJECT
+#+END_SRC
+
+** API
+
+#+NAME: example
+#+BEGIN_SRC bash
+gcloud services list --available | grep NAME
+gcloud services enable NAME
+#+END_SRC
+
+** IAM
+
+#+NAME: example
+#+BEGIN_SRC bash
+gcloud iam service-accounts create SERVICE_ACCOUNT_ID \
+ --description="DESCRIPTION" \
+ --display-name="DISPLAY_NAME"
+    
+gcloud iam service-accounts keys create key-file \
+ --iam-account=sa-name@project-id.iam.gserviceaccount.com
+
+gcloud projects add-iam-policy-binding PROJECT \
+ --member=serviceAccount:SERVICE_ACCOUNT \
+ --role=ROLE
+#+END_SRC
+
+** Secret Manager
+
+#+NAME: example
+#+BEGIN_SRC bash
+gcloud projects add-iam-policy-binding PROJECT \
+ --member=serviceAccount:SERVICE_ACCOUNT \
+ --role=roles/secretmanager.admin
+#+END_SRC
+
+#+NAME: example
+#+BEGIN_SRC bash
+gcloud secrets create secret-id \
+ --replication-policy="automatic"
+    
+gcloud secrets versions add secret-id --data-file="/path/to/file.txt"
+#+END_SRC
+
+#+NAME: example
+#+BEGIN_SRC bash
+gcloud secrets create secret-id --data-file="/path/to/file.txt"
+#+END_SRC
+
+#+NAME: example
+#+BEGIN_SRC bash
+gcloud secrets versions access 1 --secret=SECRET
+#+END_SRC
+
+#+NAME: example
+#+BEGIN_SRC bash
+gcloud secrets delete my-secret
+gcloud secrets delete my-secret --etag=\"123\"
+#+END_SRC
+
+** Bigtable
+
+#+NAME: example
+#+BEGIN_SRC bash
+gcloud bigtable instances create INSTANCE \
+ --cluster=CLUSTER \
+ --cluster-zone=us-central1-a \
+ --display-name=INSTANCE \
+ --instance-type=DEVELOPMENT
+
+cbt -project PROJECT -instance INSTANCE createtable TABLE
+cbt -project PROJECT -instance INSTANCE createfamily TABLE FAMILY
+
+gcloud projects add-iam-policy-binding PROJECT \
+ --member=serviceAccount:SERVICE_ACCOUNT \
+ --role=roles/bigtable.reader
+
+gcloud projects add-iam-policy-binding PROJECT \
+ --member=serviceAccount:SERVICE_ACCOUNT \
+ --role=roles/bigtable.user
+
+cbt listinstances
+
+cbt -project PROJECT -instance INSTANCE ls
+
+cbt -project PROJECT -instance INSTANCE ls TABLE
+
+cbt -project PROJECT \
+ -instance INSTANCE read TABLE columns=attr:atrib1,attr:atrib2 count=1
+
+cbt -project PROJECT -instance INSTANCE count TABLE
+#+END_SRC
+
+** Cloud Run
+
+#+NAME: example
+#+BEGIN_SRC bash
+curl -X POST \
+ -H "Authorization: Bearer $(gcloud auth print-identity-token)" \
+ https://url/endpoint  \
+ -d '{"key":"value"}' -s | python -m json.tool
+#+END_SRC
+
+
+** Resources
+
+- https://cloud.google.com/bigtable/docs/cbt-overview
+- https://cloud.google.com/bigtable/docs/cbt-reference
+- https://cloud.google.com/bigquery/external-data-bigtable#bq
+- https://cloud.google.com/bigtable/docs/cbt-reference#read_rows
+- https://cloud.google.com/bigtable/docs/samples-python-hello
+- https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/bigtable_instance
+- https://cloud.google.com/sdk/gcloud/reference/beta/bigtable/instances/create
+- https://cloud.google.com/iam/docs/creating-managing-service-accounts#iam-service-accounts-create-gcloud
+- https://cloud.google.com/iam/docs/creating-managing-service-account-keys
+- https://cloud.google.com/secret-manager/docs/creating-and-accessing-secrets#secretmanager-create-secret-gcloud
+- https://cloud.google.com/sdk/gcloud/reference/secrets/delete
+
+#+include: footer.org

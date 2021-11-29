@@ -1,0 +1,29 @@
+# + OPTIONS: title:nil
+#+OPTIONS: toc:nil
+#+OPTIONS: num:nil
+#+OPTIONS: html-postamble:nil
+#+OPTIONS: ^:{}
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style.css" />
+
+#+HTML_LINK_UP: index.html
+#+HTML_LINK_HOME: index.html
+
+#+TITLE: About this website
+#+DESCRIPTION: About this website
+
+Meant to be used as a second brain and as a reference for things I'm interested
+in, including but not limited to technical topics related to computer science.
+
+This site is powered by [[https://www.gnu.org/software/emacs/][emacs]] and [[https://orgmode.org/][orgmode]] in a static site generator fashion,
+each page provides a link in the footer in which one can download the source
+org file.
+
+DNS configuration is managed through [[https://www.cloudflare.com]],
+served by [[https://www.digitalocean.com/products/app-platform/][DigitalOcean App Platform]] and deployed by using [[https://github.com/features/actions][Github Actions]],
+nothing too fancy, keep it simple.
+
+The look and feel is intended to have a minimal memory footprint, hence the
+simplicity of using a set of minimal HTML resources like javascript scripts and
+css styling, providing a less cluttered content - easy to read.
+
+#+include: footer.org

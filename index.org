@@ -1,12 +1,14 @@
+# + OPTIONS: title:nil
 #+OPTIONS: toc:nil
 #+OPTIONS: num:nil
 #+OPTIONS: html-postamble:nil
-#+HTML_HEAD: <style type="text/css">body{ max-width:700px; }</style>
 #+OPTIONS: ^:{}
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style.css" />
 
-* dll.icu
+#+TITLE: > dll.icu
+#+DESCRIPTION: dll.icu / computer science stuff / personal site
 
-A bunch of snippets and relevant info to be used as reference.
+A bunch of snippets and relevant info to be used as reference and second brain.
 
 #+NAME: example
 #+BEGIN_SRC bash
@@ -14,8 +16,14 @@ A bunch of snippets and relevant info to be used as reference.
 01234567890123456789012345678901234567890123456789012345678901234567890123456789
 #+END_SRC
 
-* Index
+** Index
 
-- [[file:knowledgebase.org][Knowledge Base]] : Bunch of notes intended to be a knowledge base.
+- [[file:knowledgebase.org][Knowledge Base]] : Bunch of notes intended to be a knowledge base nor a second
+  brain.
 
-// emacs + orgmode ... aliens are real
+** Meta
+
+- [[file:about.org][About this page]]
+
+#+include: footer.org
+
