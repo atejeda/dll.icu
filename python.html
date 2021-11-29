@@ -6,9 +6,9 @@
 <!-- 2021-11-29 Mon 04:35 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>​&gt; knowledge base</title>
+<title>&gt; python</title>
 <meta name="generator" content="Org mode" />
-<meta name="description" content="A second brain, as knowledge base-ish system"
+<meta name="description" content="python notes"
  />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -220,46 +220,176 @@
 </head>
 <body>
 <div id="org-div-home-and-up">
- <a accesskey="h" href="index.html"> UP </a>
+ <a accesskey="h" href="knowledgebase.html"> UP </a>
  |
  <a accesskey="H" href="index.html"> HOME </a>
 </div><div id="content">
-<h1 class="title">​&gt; knowledge base</h1>
+<h1 class="title">&gt; python</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org3d9a0f3">archlinux</a></li>
-<li><a href="#orgdcdc557">google cloud platform</a></li>
-<li><a href="#org85d7fc2">python</a></li>
+<li><a href="#orgf84f233">pyenv setup</a></li>
+<li><a href="#orgd80e8b2">pyenv setup (packages)</a></li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org3d9a0f3" class="outline-2">
-<h2 id="org3d9a0f3"><a href="archlinux.html">archlinux</a></h2>
-<div class="outline-text-2" id="text-org3d9a0f3">
-<p>
-My personal notes about arch, xmonad, xmobar, etc.
-</p>
-</div>
-</div>
-
-<div id="outline-container-orgdcdc557" class="outline-2">
-<h2 id="orgdcdc557"><a href="googlecloud.html">google cloud platform</a></h2>
-<div class="outline-text-2" id="text-orgdcdc557">
-<p>
-Not everything that exists on GCP, but useful snippets and whatnot related to
-the platform.
-</p>
-</div>
-</div>
-
-<div id="outline-container-org85d7fc2" class="outline-2">
-<h2 id="org85d7fc2"><a href="python.html">python</a></h2>
-<div class="outline-text-2" id="text-org85d7fc2">
 <p>
 Notes about python, snippets, configurations, etc.
+</p>
+
+<div id="outline-container-orgf84f233" class="outline-2">
+<h2 id="orgf84f233">pyenv setup</h2>
+<div class="outline-text-2" id="text-orgf84f233">
+<p>
+This snippet will install python 3.8.2 by default, download the file from
+<a href="python.pyenv.sh">python.pyenv.sh</a> to have an automated installation on your environment,
+one can change the version to install by setting <i>INSTALL_PYTHON_VERSION=3.7.2</i>
+before executing the script.
+</p>
+
+<p>
+Below, the source code of the pyenv installer script, compatible with
+gnu​linux and macos. This script will build the specified python by using pyenv
+and setup a profile written in <i>$HOME​/.pyenv.profile</i>, the instruction to load
+this profile will be tail appended to the <i>.bashrc</i> profile.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">#!/usr/bin/env bash
+
+curl https://pyenv.run | bash
+
+cat &lt;&lt;EOF &gt; $HOME/.pyenv.profile
+_PYENV_PYVERSION=${INSTALL_PYTHON_VERSION:-3.8.2}
+export PYENV_ROOT=\$HOME/.pyenv
+export PATH=\$PYENV_ROOT/bin:\$PATH
+eval "\$(pyenv init --path)"
+eval "\$(pyenv init -)"
+eval "\$(pyenv virtualenv-init -)"
+EOF
+
+echo ". $HOME/.pyenv.profile" &gt;&gt; $HOME/.bashrc
+. $HOME/.bashrc
+
+pyenv install $_PYENV_PYVERSION
+pyenv global $_PYENV_PYVERSION
+python --version
+</pre>
+</div>
+
+<p>
+Also, by executing the curl command below, one can install pyenv unattended,
+be aware of the needed packages though.
+</p>
+
+<div class="org-src-container">
+<pre id="code0" class="src src-bash"></pre>
+</div>
+<script type="text/javascript">
+var url = window.location;
+var base = url.protocol +"//" + url.host + "/" +
+ url.pathname.split('/').slice(0, -1).join('/');
+document.getElementById('code0').textContent =`# example
+INSTALL_PYTHON_VERSION=3.7.2
+curl \\
+ ${base}python.pyenv.sh \\
+ | bash
+`
+</script>
+
+<p>
+Refer to the OS flavor to install the required packages to build python, the
+script should be compatible with most gnulinux and macos systems.
+</p>
+
+<p>
+For more documentation, refer to <a href="https://github.com/pyenv/pyenv">https://github.com/pyenv/pyenv</a>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd80e8b2" class="outline-2">
+<h2 id="orgd80e8b2">pyenv setup (packages)</h2>
+<div class="outline-text-2" id="text-orgd80e8b2">
+<p>
+<b>Debian ​/ Ubuntu</b>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">#!/usr/bin/env bash
+apt update -y
+apt install -y make build-essential libssl-dev zlib1g-dev \
+ libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
+ libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev \
+ liblzma-dev python-openssl git
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">
+<div id="code1"></div>
+</pre>
+</div>
+<script type="text/javascript">
+var url = window.location;
+var base = url.protocol + "//" + url.host + "/" +
+ url.pathname.split('/').slice(0, -1).join('/');
+document.getElementById('code1').textContent =`# example
+curl \\
+ ${base}python.pyenv.req.debian.sh \\
+ | bash
+`
+</script>
+
+
+<p>
+<b>Arch</b>:
+</p>
+
+<p>
+If you are using this distro, you probably don't need too much info, but use
+this snippet as a hint.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">#!/usr/bin/env bash
+pacman -Sy git base-devel --noconfirm
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">
+<div id="code2"></div>
+</pre>
+</div>
+<script type="text/javascript">
+var url = window.location;
+var base = url.protocol + "//" + url.host + "/" +
+ url.pathname.split('/').slice(0, -1).join('/');
+document.getElementById('code2').textContent =`# example
+curl \\
+ ${base}python.pyenv.req.arch.sh \\
+ | bash
+`
+</script>
+
+
+<p>
+<b>MacOs</b>:
+</p>
+
+<p>
+homebrew is your best friend (after installing xcode)
+</p>
+
+<p>
+<b>Others</b>:
+</p>
+
+<p>
+Like RHEL derivates and other weird distros, you are alone my friend, but
+look for similar packages like the ones required by Debian and friends.
 </p>
 
 <hr/>

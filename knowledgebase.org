@@ -1,18 +1,27 @@
+# + OPTIONS: title:nil
+# + OPTIONS: toc:nil
 #+OPTIONS: num:nil
 #+OPTIONS: html-postamble:nil
-#+HTML_HEAD: <style type="text/css">body{ max-width:700px; }</style>
 #+OPTIONS: ^:{}
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style.css" />
 
-#+LINK_UP: 
-#+LINK_HOME: index.html
+#+HTML_LINK_UP: index.html
+#+HTML_LINK_HOME: index.html
 
-#+TITLE: dll.icu / knowledge base
+#+TITLE: ​> knowledge base
+#+DESCRIPTION: A second brain, as knowledge base-ish system
 
-* [[file:archlinux.org][Arch Linux]]
+* [[file:archlinux.org][archlinux]]
 
   My personal notes about arch, xmonad, xmobar, etc.
-
-* [[file:googlecloud.org][Google Cloud Platform]]
+  
+* [[file:googlecloud.org][google cloud platform]]
 
   Not everything that exists on GCP, but useful snippets and whatnot related to
   the platform.
+
+* [[file:python.org][python]]
+
+  Notes about python, snippets, configurations, etc.
+
+#+include: footer.org

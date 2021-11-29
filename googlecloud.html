@@ -3,11 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-10-07 Thu 22:21 -->
+<!-- 2021-11-29 Mon 04:35 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>dll.icu / knowledge base / Google Cloud Platform</title>
+<title>&gt; google cloud platform</title>
 <meta name="generator" content="Org mode" />
+<meta name="description" content="google cloud platform notes"
+ />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -192,7 +194,7 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
-<style type="text/css">body{ max-width:700px; }</style>
+<link rel="stylesheet" type="text/css" href="style.css" />
 <script type="text/javascript">
 // @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
@@ -217,19 +219,197 @@
 </script>
 </head>
 <body>
-<div id="content">
-<h1 class="title">dll.icu / knowledge base / Google Cloud Platform</h1>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href="knowledgebase.html"> UP </a>
+ |
+ <a accesskey="H" href="index.html"> HOME </a>
+</div><div id="content">
+<h1 class="title">&gt; google cloud platform</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org391159f">Google Cloud Platform</a></li>
+<li><a href="#org2b6fabd">Accounts and projects</a></li>
+<li><a href="#orgc47cdd9">API</a></li>
+<li><a href="#org65b4804">IAM</a></li>
+<li><a href="#org04091a7">Secret Manager</a></li>
+<li><a href="#orgc36107b">Bigtable</a></li>
+<li><a href="#orge1a4d80">Cloud Run</a></li>
+<li><a href="#org17df0ae">Resources</a></li>
 </ul>
 </div>
 </div>
+<p>
+Not everything that exists on GCP, but useful snippets and whatnot related to
+the platform.
+</p>
 
-<div id="outline-container-org391159f" class="outline-2">
-<h2 id="org391159f">Google Cloud Platform</h2>
+<div id="outline-container-org2b6fabd" class="outline-2">
+<h2 id="org2b6fabd">Accounts and projects</h2>
+<div class="outline-text-2" id="text-org2b6fabd">
+<div class="org-src-container">
+<pre class="src src-bash" id="orgcdc75ea">gcloud auth list
+gcloud config set account ACCOUNT
+
+gcloud projects list
+gcloud config set project PROJECT
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc47cdd9" class="outline-2">
+<h2 id="orgc47cdd9">API</h2>
+<div class="outline-text-2" id="text-orgc47cdd9">
+<div class="org-src-container">
+<pre class="src src-bash" id="org8d23589">gcloud services list --available | grep NAME
+gcloud services enable NAME
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org65b4804" class="outline-2">
+<h2 id="org65b4804">IAM</h2>
+<div class="outline-text-2" id="text-org65b4804">
+<div class="org-src-container">
+<pre class="src src-bash" id="org280383f">gcloud iam service-accounts create SERVICE_ACCOUNT_ID \
+ --description="DESCRIPTION" \
+ --display-name="DISPLAY_NAME"
+
+gcloud iam service-accounts keys create key-file \
+ --iam-account=sa-name@project-id.iam.gserviceaccount.com
+
+gcloud projects add-iam-policy-binding PROJECT \
+ --member=serviceAccount:SERVICE_ACCOUNT \
+ --role=ROLE
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org04091a7" class="outline-2">
+<h2 id="org04091a7">Secret Manager</h2>
+<div class="outline-text-2" id="text-org04091a7">
+<div class="org-src-container">
+<pre class="src src-bash" id="orgf3244a5">gcloud projects add-iam-policy-binding PROJECT \
+ --member=serviceAccount:SERVICE_ACCOUNT \
+ --role=roles/secretmanager.admin
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash" id="org6461da1">gcloud secrets create secret-id \
+ --replication-policy="automatic"
+
+gcloud secrets versions add secret-id --data-file="/path/to/file.txt"
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash" id="org43933cb">gcloud secrets create secret-id --data-file="/path/to/file.txt"
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash" id="orgba66283">gcloud secrets versions access 1 --secret=SECRET
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash" id="org500a5f9">gcloud secrets delete my-secret
+gcloud secrets delete my-secret --etag=\"123\"
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc36107b" class="outline-2">
+<h2 id="orgc36107b">Bigtable</h2>
+<div class="outline-text-2" id="text-orgc36107b">
+<div class="org-src-container">
+<pre class="src src-bash" id="orgd9d7d1b">gcloud bigtable instances create INSTANCE \
+ --cluster=CLUSTER \
+ --cluster-zone=us-central1-a \
+ --display-name=INSTANCE \
+ --instance-type=DEVELOPMENT
+
+cbt -project PROJECT -instance INSTANCE createtable TABLE
+cbt -project PROJECT -instance INSTANCE createfamily TABLE FAMILY
+
+gcloud projects add-iam-policy-binding PROJECT \
+ --member=serviceAccount:SERVICE_ACCOUNT \
+ --role=roles/bigtable.reader
+
+gcloud projects add-iam-policy-binding PROJECT \
+ --member=serviceAccount:SERVICE_ACCOUNT \
+ --role=roles/bigtable.user
+
+cbt listinstances
+
+cbt -project PROJECT -instance INSTANCE ls
+
+cbt -project PROJECT -instance INSTANCE ls TABLE
+
+cbt -project PROJECT \
+ -instance INSTANCE read TABLE columns=attr:atrib1,attr:atrib2 count=1
+
+cbt -project PROJECT -instance INSTANCE count TABLE
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge1a4d80" class="outline-2">
+<h2 id="orge1a4d80">Cloud Run</h2>
+<div class="outline-text-2" id="text-orge1a4d80">
+<div class="org-src-container">
+<pre class="src src-bash" id="orgd41b133">curl -X POST \
+ -H "Authorization: Bearer $(gcloud auth print-identity-token)" \
+ https://url/endpoint  \
+ -d '{"key":"value"}' -s | python -m json.tool
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org17df0ae" class="outline-2">
+<h2 id="org17df0ae">Resources</h2>
+<div class="outline-text-2" id="text-org17df0ae">
+<ul class="org-ul">
+<li><a href="https://cloud.google.com/bigtable/docs/cbt-overview">https://cloud.google.com/bigtable/docs/cbt-overview</a></li>
+<li><a href="https://cloud.google.com/bigtable/docs/cbt-reference">https://cloud.google.com/bigtable/docs/cbt-reference</a></li>
+<li><a href="https://cloud.google.com/bigquery/external-data-bigtable#bq">https://cloud.google.com/bigquery/external-data-bigtable#bq</a></li>
+<li><a href="https://cloud.google.com/bigtable/docs/cbt-reference#read_rows">https://cloud.google.com/bigtable/docs/cbt-reference#read_rows</a></li>
+<li><a href="https://cloud.google.com/bigtable/docs/samples-python-hello">https://cloud.google.com/bigtable/docs/samples-python-hello</a></li>
+<li><a href="https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/bigtable_instance">https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/bigtable_instance</a></li>
+<li><a href="https://cloud.google.com/sdk/gcloud/reference/beta/bigtable/instances/create">https://cloud.google.com/sdk/gcloud/reference/beta/bigtable/instances/create</a></li>
+<li><a href="https://cloud.google.com/iam/docs/creating-managing-service-accounts#iam-service-accounts-create-gcloud">https://cloud.google.com/iam/docs/creating-managing-service-accounts#iam-service-accounts-create-gcloud</a></li>
+<li><a href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys">https://cloud.google.com/iam/docs/creating-managing-service-account-keys</a></li>
+<li><a href="https://cloud.google.com/secret-manager/docs/creating-and-accessing-secrets#secretmanager-create-secret-gcloud">https://cloud.google.com/secret-manager/docs/creating-and-accessing-secrets#secretmanager-create-secret-gcloud</a></li>
+<li><a href="https://cloud.google.com/sdk/gcloud/reference/secrets/delete">https://cloud.google.com/sdk/gcloud/reference/secrets/delete</a></li>
+</ul>
+
+<hr/>
+<div id="code0"></div>
+<script type="text/javascript">
+var url = window.location;
+var base = url.protocol +"//" + url.host + "/" +
+ url.pathname.replace('.html', '.org');
+document.getElementById('code0').innerHTML = `
+<a href="${base}">source: ${url.pathname.replace('.html', '.org')}</a>
+`
+</script>
+
+<p>
+​/* powered by emacs and orgmode &#x2026; aliens are real *​/
+</p>
+
+<p>
+141325e2fa425ff0de15d0962244899acfaa4ac6
+</p>
+</div>
 </div>
 </div>
 </body>
