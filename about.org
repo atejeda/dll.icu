@@ -26,6 +26,6 @@ The look and feel is intended to have a minimal memory footprint, hence the
 simplicity of using a set of minimal HTML resources like javascript scripts and
 css styling, providing a less cluttered content - easy to read.
 
-I'm reachable on twitter [[https://twitter.com/alexmeistercl][@alexmeistercl]].
+I'm reachable on twitter as [[https://twitter.com/alexmeistercl][@alexmeistercl]].
 
 #+include: footer.org
