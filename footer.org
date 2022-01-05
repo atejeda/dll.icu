@@ -2,6 +2,6 @@
 
 #+include: download.this.page.org
 
-​/* powered by emacs and orgmode ... aliens are real *​/
+​/* powered by emacs and orgmode *​/
 
 #+include: version.org

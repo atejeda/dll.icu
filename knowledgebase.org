@@ -1,5 +1,5 @@
 # + OPTIONS: title:nil
-# + OPTIONS: toc:nil
+#+OPTIONS: toc:nil
 #+OPTIONS: num:nil
 #+OPTIONS: html-postamble:nil
 #+OPTIONS: ^:{}
@@ -11,16 +11,16 @@
 #+TITLE: ​> knowledge base
 #+DESCRIPTION: A second brain, as knowledge base-ish system
 
-* [[file:archlinux.org][archlinux]]
+* [[file:archlinux.org][Arch Linux]]
 
   My personal notes about arch, xmonad, xmobar, etc.
   
-* [[file:googlecloud.org][google cloud platform]]
+* [[file:googlecloud.org][Google Cloud Platform]]
 
   Not everything that exists on GCP, but useful snippets and whatnot related to
   the platform.
 
-* [[file:python.org][python]]
+* [[file:python.org][Python]]
 
   Notes about python, snippets, configurations, etc.
 

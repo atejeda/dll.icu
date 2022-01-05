@@ -42,9 +42,7 @@ var base = url.protocol +"//" + url.host + "/" +
  url.pathname.split('/').slice(0, -1).join('/');
 document.getElementById('code0').textContent =`# example
 INSTALL_PYTHON_VERSION=3.7.2
-curl \\
- ${base}python.pyenv.sh \\
- | bash
+curl ${base}python.pyenv.sh | bash
 `
 </script>
 #+END_export
@@ -71,9 +69,7 @@ var url = window.location;
 var base = url.protocol + "//" + url.host + "/" +
  url.pathname.split('/').slice(0, -1).join('/');
 document.getElementById('code1').textContent =`# example
-curl \\
- ${base}python.pyenv.req.debian.sh \\
- | bash
+curl ${base}python.pyenv.req.debian.sh | bash
 `
 </script>
 #+END_export
@@ -97,9 +93,7 @@ var url = window.location;
 var base = url.protocol + "//" + url.host + "/" +
  url.pathname.split('/').slice(0, -1).join('/');
 document.getElementById('code2').textContent =`# example
-curl \\
- ${base}python.pyenv.req.arch.sh \\
- | bash
+curl ${base}python.pyenv.req.arch.sh | bash
 `
 </script>
 #+END_export
