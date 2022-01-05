@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-11-29 Mon 04:57 -->
+<!-- 2022-01-05 Wed 15:17 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&gt; python</title>
@@ -229,8 +229,8 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgf93d39f">pyenv setup</a></li>
-<li><a href="#orge815582">pyenv setup (packages)</a></li>
+<li><a href="#orge0eb1f2">pyenv setup</a></li>
+<li><a href="#orgad78c9b">pyenv setup (packages)</a></li>
 </ul>
 </div>
 </div>
@@ -238,9 +238,9 @@
 Notes about python, snippets, configurations, etc.
 </p>
 
-<div id="outline-container-orgf93d39f" class="outline-2">
-<h2 id="orgf93d39f">pyenv setup</h2>
-<div class="outline-text-2" id="text-orgf93d39f">
+<div id="outline-container-orge0eb1f2" class="outline-2">
+<h2 id="orge0eb1f2">pyenv setup</h2>
+<div class="outline-text-2" id="text-orge0eb1f2">
 <p>
 This snippet will install python 3.8.2 by default, download the file from
 <a href="python.pyenv.sh">python.pyenv.sh</a> to have an automated installation on your environment,
@@ -292,9 +292,7 @@ var base = url.protocol +"//" + url.host + "/" +
  url.pathname.split('/').slice(0, -1).join('/');
 document.getElementById('code0').textContent =`# example
 INSTALL_PYTHON_VERSION=3.7.2
-curl \\
- ${base}python.pyenv.sh \\
- | bash
+curl ${base}python.pyenv.sh | bash
 `
 </script>
 
@@ -309,9 +307,9 @@ For more documentation, refer to <a href="https://github.com/pyenv/pyenv">https:
 </div>
 </div>
 
-<div id="outline-container-orge815582" class="outline-2">
-<h2 id="orge815582">pyenv setup (packages)</h2>
-<div class="outline-text-2" id="text-orge815582">
+<div id="outline-container-orgad78c9b" class="outline-2">
+<h2 id="orgad78c9b">pyenv setup (packages)</h2>
+<div class="outline-text-2" id="text-orgad78c9b">
 <p>
 <b>Debian ​/ Ubuntu</b>:
 </p>
@@ -336,9 +334,7 @@ var url = window.location;
 var base = url.protocol + "//" + url.host + "/" +
  url.pathname.split('/').slice(0, -1).join('/');
 document.getElementById('code1').textContent =`# example
-curl \\
- ${base}python.pyenv.req.debian.sh \\
- | bash
+curl ${base}python.pyenv.req.debian.sh | bash
 `
 </script>
 
@@ -368,9 +364,7 @@ var url = window.location;
 var base = url.protocol + "//" + url.host + "/" +
  url.pathname.split('/').slice(0, -1).join('/');
 document.getElementById('code2').textContent =`# example
-curl \\
- ${base}python.pyenv.req.arch.sh \\
- | bash
+curl ${base}python.pyenv.req.arch.sh | bash
 `
 </script>
 
@@ -404,11 +398,11 @@ document.getElementById('download_this_page').innerHTML = `
 </script>
 
 <p>
-​/* powered by emacs and orgmode &#x2026; aliens are real *​/
+​/* powered by emacs and orgmode *​/
 </p>
 
 <p>
-2604b1ed19c71d7ba5f2f6718b3d0daf9a6d1e0d
+533c08ef2a207d77e9d7e45ace2aaa3b54182a9b
 </p>
 </div>
 </div>

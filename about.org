@@ -11,7 +11,7 @@
 #+TITLE: About this website
 #+DESCRIPTION: About this website
 
-Meant to be used as a second brain and as a reference for things I'm interested
+Meant to be used as knowledge base nor as a reference for things I'm interested
 in, including but not limited to technical topics related to computer science.
 
 This site is powered by [[https://www.gnu.org/software/emacs/][emacs]] and [[https://orgmode.org/][orgmode]] in a static site generator fashion,
