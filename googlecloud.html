@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-01-09 Sun 06:36 -->
+<!-- 2022-01-09 Sun 12:23 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&gt; google cloud platform</title>
@@ -229,13 +229,13 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org8777b36">Accounts and projects</a></li>
-<li><a href="#org1bb479e">API</a></li>
-<li><a href="#org7518d44">IAM</a></li>
-<li><a href="#orgae1d023">Secret Manager</a></li>
-<li><a href="#org570fed0">Bigtable</a></li>
-<li><a href="#orgeaae8b2">Cloud Run</a></li>
-<li><a href="#orgd2ae573">Resources</a></li>
+<li><a href="#org57c7d33">Accounts and projects</a></li>
+<li><a href="#org17f85ac">API</a></li>
+<li><a href="#org3e05371">IAM</a></li>
+<li><a href="#orgfeab3b9">Secret Manager</a></li>
+<li><a href="#org975b4c7">Bigtable</a></li>
+<li><a href="#orgeb6db9d">Cloud Run</a></li>
+<li><a href="#org84e2364">Resources</a></li>
 </ul>
 </div>
 </div>
@@ -244,11 +244,11 @@ Not everything that exists on GCP, but useful snippets and whatnot related to
 the platform.
 </p>
 
-<div id="outline-container-org8777b36" class="outline-2">
-<h2 id="org8777b36">Accounts and projects</h2>
-<div class="outline-text-2" id="text-org8777b36">
+<div id="outline-container-org57c7d33" class="outline-2">
+<h2 id="org57c7d33">Accounts and projects</h2>
+<div class="outline-text-2" id="text-org57c7d33">
 <div class="org-src-container">
-<pre class="src src-bash" id="org55b5e2c">gcloud auth list
+<pre class="src src-bash" id="org1ac1beb">gcloud auth list
 gcloud config set account ACCOUNT
 
 gcloud projects list
@@ -258,22 +258,22 @@ gcloud config set project PROJECT
 </div>
 </div>
 
-<div id="outline-container-org1bb479e" class="outline-2">
-<h2 id="org1bb479e">API</h2>
-<div class="outline-text-2" id="text-org1bb479e">
+<div id="outline-container-org17f85ac" class="outline-2">
+<h2 id="org17f85ac">API</h2>
+<div class="outline-text-2" id="text-org17f85ac">
 <div class="org-src-container">
-<pre class="src src-bash" id="orge45b856">gcloud services list --available | grep NAME
+<pre class="src src-bash" id="org132ed80">gcloud services list --available | grep NAME
 gcloud services enable NAME
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org7518d44" class="outline-2">
-<h2 id="org7518d44">IAM</h2>
-<div class="outline-text-2" id="text-org7518d44">
+<div id="outline-container-org3e05371" class="outline-2">
+<h2 id="org3e05371">IAM</h2>
+<div class="outline-text-2" id="text-org3e05371">
 <div class="org-src-container">
-<pre class="src src-bash" id="org0fde644">gcloud iam service-accounts create SERVICE_ACCOUNT_ID \
+<pre class="src src-bash" id="orgecd11d9">gcloud iam service-accounts create SERVICE_ACCOUNT_ID \
  --description="DESCRIPTION" \
  --display-name="DISPLAY_NAME"
 
@@ -288,18 +288,18 @@ gcloud projects add-iam-policy-binding PROJECT \
 </div>
 </div>
 
-<div id="outline-container-orgae1d023" class="outline-2">
-<h2 id="orgae1d023">Secret Manager</h2>
-<div class="outline-text-2" id="text-orgae1d023">
+<div id="outline-container-orgfeab3b9" class="outline-2">
+<h2 id="orgfeab3b9">Secret Manager</h2>
+<div class="outline-text-2" id="text-orgfeab3b9">
 <div class="org-src-container">
-<pre class="src src-bash" id="org4c139a8">gcloud projects add-iam-policy-binding PROJECT \
+<pre class="src src-bash" id="orgce844e5">gcloud projects add-iam-policy-binding PROJECT \
  --member=serviceAccount:SERVICE_ACCOUNT \
  --role=roles/secretmanager.admin
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-bash" id="org4d6f9f2">gcloud secrets create secret-id \
+<pre class="src src-bash" id="org988eeef">gcloud secrets create secret-id \
  --replication-policy="automatic"
 
 gcloud secrets versions add secret-id --data-file="/path/to/file.txt"
@@ -307,28 +307,28 @@ gcloud secrets versions add secret-id --data-file="/path/to/file.txt"
 </div>
 
 <div class="org-src-container">
-<pre class="src src-bash" id="org5b1c91b">gcloud secrets create secret-id --data-file="/path/to/file.txt"
+<pre class="src src-bash" id="org93d3795">gcloud secrets create secret-id --data-file="/path/to/file.txt"
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-bash" id="orge0c1eac">gcloud secrets versions access 1 --secret=SECRET
+<pre class="src src-bash" id="org1489e09">gcloud secrets versions access 1 --secret=SECRET
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-bash" id="orgba0d533">gcloud secrets delete my-secret
+<pre class="src src-bash" id="org90fe6bd">gcloud secrets delete my-secret
 gcloud secrets delete my-secret --etag=\"123\"
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org570fed0" class="outline-2">
-<h2 id="org570fed0">Bigtable</h2>
-<div class="outline-text-2" id="text-org570fed0">
+<div id="outline-container-org975b4c7" class="outline-2">
+<h2 id="org975b4c7">Bigtable</h2>
+<div class="outline-text-2" id="text-org975b4c7">
 <div class="org-src-container">
-<pre class="src src-bash" id="org288da1f">gcloud bigtable instances create INSTANCE \
+<pre class="src src-bash" id="org42b261d">gcloud bigtable instances create INSTANCE \
  --cluster=CLUSTER \
  --cluster-zone=us-central1-a \
  --display-name=INSTANCE \
@@ -360,11 +360,11 @@ cbt -project PROJECT -instance INSTANCE count TABLE
 </div>
 </div>
 
-<div id="outline-container-orgeaae8b2" class="outline-2">
-<h2 id="orgeaae8b2">Cloud Run</h2>
-<div class="outline-text-2" id="text-orgeaae8b2">
+<div id="outline-container-orgeb6db9d" class="outline-2">
+<h2 id="orgeb6db9d">Cloud Run</h2>
+<div class="outline-text-2" id="text-orgeb6db9d">
 <div class="org-src-container">
-<pre class="src src-bash" id="orgecb966c">curl -X POST \
+<pre class="src src-bash" id="orgc256b2f">curl -X POST \
  -H "Authorization: Bearer $(gcloud auth print-identity-token)" \
  https://url/endpoint  \
  -d '{"key":"value"}' -s | python -m json.tool
@@ -374,9 +374,9 @@ cbt -project PROJECT -instance INSTANCE count TABLE
 </div>
 
 
-<div id="outline-container-orgd2ae573" class="outline-2">
-<h2 id="orgd2ae573">Resources</h2>
-<div class="outline-text-2" id="text-orgd2ae573">
+<div id="outline-container-org84e2364" class="outline-2">
+<h2 id="org84e2364">Resources</h2>
+<div class="outline-text-2" id="text-org84e2364">
 <ul class="org-ul">
 <li><a href="https://cloud.google.com/bigtable/docs/cbt-overview">https://cloud.google.com/bigtable/docs/cbt-overview</a></li>
 <li><a href="https://cloud.google.com/bigtable/docs/cbt-reference">https://cloud.google.com/bigtable/docs/cbt-reference</a></li>
@@ -407,7 +407,7 @@ document.getElementById('download_this_page').innerHTML = `
 </p>
 
 <p>
-6b37425ad1f1b770df453110c685f4062f09e92c
+ace6792dd3e54de8ea5667a5a3e54276bf771476
 </p>
 </div>
 </div>
