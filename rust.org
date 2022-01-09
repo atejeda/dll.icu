@@ -1,0 +1,897 @@
+* Rust
+  
+** Cargo
+  
+Cargo is a package manager, builder, test runner and document generator.
+
+#+begin_src bash
+cargo new hello
+#+end_src
+
+Will create a hello project, along with cargo.toml, which is the project
+configuration.
+
+#+begin_src bash
+cargo run
+#+end_src
+
+Will compile the debug version by default, "--release" will produce the release
+version without debugging symbols.
+
+#+begin_src bash
+cargo run --release
+#+end_src
+
+
+** Variables
+
+Rust is a braced language, it end sentences with ; (semi-colon), it is also a
+strongly typed language, but it can infer type variables based on the value:
+
+#+begin_src
+let a = 2;
+let b: i32 = 2;
+let (c,d) = (1,2)
+#+end_src
+
+Variables are immutable by default in rust, for safety, concurrency and speed,
+but it can be declared as mutable too.
+
+#+begin_src
+let mut a = 0;
+a = 1;
+#+end_src
+
+Constant variables are often uppercased, can be set out the module scope, e.g.:
+global.
+
+#+begin_src
+const PI: f64 = 3.14;
+#+end_src
+
+
+** Scope
+
+Variables can be shadowed, re-declared within a specific scope.
+
+#+begin_src
+fn main() {
+  let x = 0;
+  {
+      let a = 1;
+      println!("{}", a);
+  }
+}
+#+end_src
+   
+Variables can be shadowed within the same scope, e.g.: change mutable variable
+to immutable.
+
+#+begin_src
+let mut a = 0;
+let a = 1;
+#+end_src
+
+Shadow variable with a diferent type value.
+
+#+begin_src
+let a = 0;
+let a = "1";
+#+end_src
+
+
+** Memory Safey
+
+It guarantees memory safety at compile time. This code guarantees that the
+compiler will know that the variable was defined either way of the if-statement.
+
+#+begin_src
+let a: i32;
+if true {
+    a = 1;
+} else {
+    a = 0;
+}
+#+end_src
+
+
+** Functions
+
+Use snake_case for function names, functions don't need to be declared/defined
+before its caller.
+
+#+begin_src
+fn fun(a: f64, b: f64) -> f64 {
+    // return a + b
+    a + b // "tail expression"
+}
+#+end_src
+
+It doesn't support named arguments, one needs to provide all the arguments in
+order.
+
+It doesn't support variable number of arguments.
+
+It doesn't support different types for the same arguments.
+
+Macros ends with an exclamation point, e.g.: println!
+
+
+** Module System
+
+All items in a library are private by default.
+
+hello/cargo.toml
+
+hello/src/lib.rs
+#+begin_src 
+fn fun1() { println("fun1"); } // private
+pub fn fun2() { println("func2"); } // public
+#+end_src
+
+hello/src/main.rs
+#+begin_src
+use hello::func2;
+use std::collection::HashMap
+
+fn main() {
+    hello::fun1(); // error
+    func2(): // ok
+}
+#+end_src
+
+Check rust std API and crates.io for packages.
+
+Adding packages in cargo.toml
+
+#+begin_src
+...
+[dependencies]
+package = "100.10.1"
+#+end_src
+
+Q: Same functions within the same module?, what's the scope?
+
+
+** Scalar Types
+
+There are four scalar types: integers, floats, booleas and characters.
+
+*Integers*
+
+unsigned u8, u16, ... u128, usize
+signed i8, i16, ... i128, isize
+
+Sizes cross-platform consistent, usize and isize represents the pointer platform
+size (same bit number of the target platform), can hold memory addresses and
+array indexes.
+
+By default, i32 is set when the compiler infer the variable type.
+
+No all integers are supported in all platforms, it depends on the platform
+architecture, e.g.: 16 bits machines.
+
+*Integers Literals*
+
+- Decimal 10
+- Hex 0x
+- Octal 0o
+- Binary 0b
+- Byte (u8 only) b'A' (utf-char in ascii range)
+
+These support underscores to readability.
+
+*Floating*
+
+f32 and f64 (default because it has more precision, slow on other architectures
+e.g.: 32 bits.
+
+Q: review single and double precision (check also IEEE-754)
+
+Floating point literals, follows IEEE-754, no special sufixes required,
+not valid: .1, valid: 0.1.
+
+*Sufixes*
+
+#+begin_src
+let a: u16 = 1;
+let b: f32 = 0.1;
+#+end_src
+
+same as
+
+#+begin_src
+let a = 1u16;
+let b = 0.1f32;
+#+end_src
+
+same as
+
+#+begin_src
+let a = 1_u16;
+let b = 0.1_f32;
+#+end_src
+
+this is useful to pass a numeric literal to a generic function that could
+accept multiple numeric types.
+
+*Boolean*
+
+bool, true or false, are not integers, no arithmetic on them, unless to cast
+them to some integers.
+
+#+begin_src
+true as u8
+false as u8
+#+end_src
+
+*Character*
+
+char, single unicode scalare value, any character, are 4 bytes (32 bits) long,
+a char array  makes a UCS-4 or UTF-32 strings, literals are surrounded by single
+quotes, strings are UTF-8 and characters are not, string do not used chars
+internally, sources are UTF-8, so chars defined in a UTF-8 source file are going
+to be UTF-8 strings and not really chars.
+
+
+** Compound Types
+
+*Tuples*
+
+Multiple values of other and different types in one type.
+
+#+begin_src 
+let a = (1, "one")
+let (c,d) = a
+#+end_src
+
+#+begin_src
+let a: (u8, f63, i32) = (0, 0.1, 10)
+let a1 = a.0
+let a1 = a.1
+#+end_src
+
+Tuple has a max. arity of 12, more than that you can
+still use the touple with limited functionality.
+
+Arity, how many items of a touple has.
+
+*Arrays*
+
+Multiple values of the same type, arr are limited to 32 elements, above that
+size it loose functionality, they live on the stack and are fixed size.
+
+#+begin_src
+let arr = [ 0, 0, 0 ];
+let arr = [ 0; 3 ];
+let arr: [u8; 3] = [ 0, 0, 0 ];
+let a = arr[0]
+#+end_src
+
+*Vectors*
+
+??
+
+
+** Control Flows
+
+#+begin_src
+if a == 0 {
+     b = "zero";
+} else if  a == 1 {
+     b = "one";
+} else {
+     b = "other";
+}
+#+end_src
+
+If's is an expression not an statement, expressions returns a value, statement
+don't.
+
+No semi-colon, it uses tail expresions to return the value and all the blocks
+should return the same type, braces not optional.
+
+#+begin_src
+b = if a == 0 {
+     "zero"
+} else if  a == 1 {
+     "one"
+} else {
+     "other"
+};
+#+end_src
+
+*Loop*
+
+Unconditional loops support labels:
+
+#+begin_src
+loop {
+    break;
+}
+#+end_src
+
+#+begin_src
+'loop_a: loop {
+    loop {
+        // break 'loop_a;
+        // continue 'loop_a;
+    }
+}
+#+end_src
+
+Rust doesn't coerce expressions to booleans.
+
+#+begin_src 
+while some_function() {
+    // loop ends when some_function() evaluates to false
+}
+#+end_src
+
+The code before, is sugar-sintax for:
+
+#+begin_src
+loop {
+    if !some_function() { break }
+    // some code...
+}
+#+end_src
+
+An emulated do-while would be:
+
+#+begin_src
+loop {
+    // some code...
+    if !some_function() { break }
+}
+#+end_src
+
+Rust iterates over any iterable value
+
+#+begin_src
+for a in [ 1, 2 ,3 ].iter() {
+     // some code...
+}
+#+end_src
+
+One can stack methods, like map, filter and fold, they will be lazy-evaluated.
+
+Like python, it can destructure items and bind them to variables, e.g.:
+
+#+begin_src
+for (a, b) in [(0,1) (0,2)].iter() {
+     // some code...
+}
+#+end_src
+
+Ranges, e.g.:
+
+#+begin_src
+for a in 0..10 {
+    // 0 to 9
+    // some code...
+}
+
+for a in 0..=10 {
+    // 0 to 10
+    // some code...
+}
+#+end_src
+
+
+** Strings
+
+There's 6 types of string in the rust std library.
+
+str, which is string-slice, &str is a borrowed string-slice, a literal string
+is always a borrowed string-slice, e.g.: let a = "string";
+
+&str, is often refered as string, the data can't be modified.
+
+String, data can be modified.
+
+#+begin_src
+let somestr = "string".to_string(); // create a string from a borrowed string slice
+let somestr = String::from("string");
+#+end_src
+
+- String, pointer to bytes, length and a capacity
+- &str (borrowed string-slice) pointer to bytes and length, which can be seen
+  as a subset of a String.
+
+Both types are UTF-8.
+
+Can't be index by character position, in favor to support different languages,
+review UTF-8 and unicode.
+
+Unicode scalars can be represented by 1, 2, 3 or 4 bytes, e.g.: graphemes.
+
+One can index with:
+
+#+begin_src
+word.bytes() // vector of UTF-8 bytes, works ok with english-ascii
+word.chars() // unicode scalars iterator
+// unicode-segmentation // that return iterators that handle graphemes
+//
+// all of them constant access operations
+#+end_src
+
+There's a bunch of methos to handle strings, e.g. lines(), truncate(), etc.
+
+Iterators provides the nth() method, which one can index.
+
+Q: test let mut a: String, to check if the reference is mutable or is the cont.
+Q: review UTF-8
+Q: review unicode
+Q: ascii
+
+
+** Ownership
+
+1. each value has an owner
+2. one owner of a value, which can borrow the value
+3. owner gets out of scope, value gets droped
+
+#+begin_src
+let a = String::from("string");
+let b = a;
+println("{}", a); // will produce an error since value is owned now by b
+#+end_src
+
+#+begin_src
+let a = String::from("string"); // *ptr stored in heap, len/capacity in stack
+let b = a.clone(); // copy, when only stack data is copied
+#+end_src
+
+In other languages, a clone is called a deep-copy.
+
+When a value is droped, if there's a destructure, it's inmediatly executed:
+
+1. Destructor
+2. Free Heap
+3. Pop Stack
+
+Passing it to a function:
+
+#+begin_src
+let a = String::from("string");
+fn func(a: String) {}
+func(a); // now the function is the owner
+println!("{}", a); // error, func is the "a" owner
+#+end_src
+
+One can do this to get back the ownership of the variable, not-ideal, check
+reference and borrowing.
+
+#+begin_src
+let mut a = String::from("string");
+fn func(a: String) -> String { a };
+a = func(a)
+#+end_src
+
+
+** References and Borrowing
+
+A referenc cannot outlive it's refered value, no reference to null is allowed.
+
+Reference, "a" keeps the ownership, only reference of "a" is passed to the
+function, it is like the ownership of the reference is passed to the function,
+so when the function ends its execution, the reference it's droped, not the
+value, which is like pointer.
+
+#+begin_src
+let a: String = String::from("string");
+fn func(a: &String) {}
+func(&a);
+#+end_src
+
+A reference is like a pointer to the variable, like c/c++.
+
+A reference is always immutable, even though the variable is mutable, we can
+make a mutable reference to a mutable value to change the value as well.
+
+#+begin_src
+let mut a: String = String::from("string");
+func(&mut a);
+fn func(a: &mut String) {
+  a.insert_str(0, "..."); // the dot dereference automatically
+  (*a).insert_str(0, "..."); // it dereference (manually)
+  *a = String::from("replacing the string...");
+}
+#+end_src
+
+- x: &mut i32, *x, it gives access to a mutable value
+- x: &i32, *x, it gives access to an immutable value
+
+It can only exists either, enforced by the compiler:
+
+- 1 mutable reference
+- N immutable references
+
+Q: mutable reference to a immutable value?.
+
+
+** Structs
+
+In other languages you have classes, in rust we have structs.
+
+Can have datafields, methods and associative functions.
+
+#+begin_src
+struct MyStruct {
+    field1: bool,
+    field2: u8,
+}
+
+// instantiate
+// every single field needs a value
+let mystruct = MyStruct {
+    field1: true,
+    field2: 1,
+}
+#+end_src
+
+With a constructor, e.g.: to have default values.
+
+#+begin_src
+impl MyStruct {
+    fn new() -> Self { // new is an associative function of the struct
+        Self {
+            field1: true,
+            field2: 1,
+        }
+    }
+}
+
+let mystruct = MyStruct::new(); // invokes an associative function of the struct
+let field1 = mystruct.field1;
+mystruct.field2 = 0;
+mystruct.func();
+#+end_src
+
+Methods can also be defined in the implementation block, e.g.:
+
+#+begin_src
+impl MyStruct {
+   // associated function
+   fn function() ...
+   // methods
+   fn move(self) ...
+   fn borrow(&self) ...
+   fn mut_borrow(&mut self) ...
+}
+#+end_src
+
+Q: mutable in struct methods, self as a mutable?
+
+
+** Traits
+
+Similar to interfaces in other languages, composition over inheritance.
+
+#+begin_src
+struct RedFox {
+  enemy: bool,
+  life: u32,
+}
+
+trait Noisy {
+  fn get_noise(&self) -> &str;
+}
+
+impl Noise for RedFox {
+  fn get_noise(&self) -> &str { "meow?" }
+}
+#+end_src
+
+We could have implement the trait method in the struct directly, but if we use
+traits:
+
+- we can use generic functions that accept any values that implements the
+  traits
+
+#+begin_src
+fn print_noise<T: Noisy>(item: T) {
+  println!("{}", item.get_noise));
+}
+#+end_src
+
+The above accepts a item type T, which is defined to be anything that implements
+the Noisy trait, it can use any behaviour on item that the Noise trait defines.
+
+So, we have a generic function that can take any timpoe as long it satisfies the
+Noisy trait, this is like, in java:
+
+#+begin_src
+interface MyInterface {
+   void a<ethod();
+}
+
+class MyClass implements MyInterface {
+   public aMethod() { }; 
+}
+
+class Main {
+
+   // this mimics what the trait in rust does.
+   public static void example(MyInterface myInterface) {
+       myInterface.aMethod();
+   }
+
+   public static void main(String args[]) {
+       example(new MyClass());
+   }
+}
+#+end_src
+
+One can implement any trait on any struct, including any types or builtins, e.g.:
+
+#+begin_src
+impl Noisy for u8 {
+  fn get_noise(&self) -> &str { "BYTE" }
+}
+
+fn main() {
+  print_noise(5_u8); // prints bytes
+}
+#+end_src
+
+There's a special trait called "copy", if the type implements copy, then
+the type will be copied instead of moved in move situations, this make sense
+o small values that fit on the stack, like small integers, booleans, etc..
+implements copy. If the type uses heap, it cannot implement copy. You can opt-in
+implementing copy with your own type if your type only uses other copy types.
+
+Traits implement inheritance, and one can have default trait behavior, e.g.:
+
+#+begin_src
+trait Run {
+  fn run(&self) {
+    println!("I'm running");
+  }
+}
+
+struct Robot {}
+impl Run for Robot {}
+#+end_src
+
+No fields part of traits, set getter and setter methods on the traits as a
+workaround.
+
+Q: return references?
+Q: know whether the memory is stored on the heap or in the stack.
+Q: diamond pattern
+
+
+** Collections
+
+*Vectors*
+
+Vec<T> of one type only, as any other language:
+
+ #+begin_src 
+let mut v: Vec<i32> = Vec::new();
+v.push(1);
+v.push(2);
+let x = v.pop();
+ #+end_src
+
+ #+begin_src
+// vec! mcros
+let mut v = vec![ 1, 2, 3]
+ #+end_src
+
+*HashMap*
+
+ #+begin_src
+let mut h: HashMap<u8, bool> = HashMap::new();
+h.insert(0, false);
+h.insert(1, true);
+let value = h.remove(&1).unwrap(); // returns an enum
+ #+end_src
+
+*Others*
+
+- HashSet
+- VecDeque
+- LinkedList
+- BinaryHeap
+- BTreeSet
+- BTreeMap
+
+Q: add description
+Q: other collections
+
+
+** Enums
+
+Enums in rust are more like algebraic data types in haskell than c-like enums.
+
+#+begin_src
+enum Color {
+  Red,
+  Green,
+  Blue,
+}
+
+let color = Color::Red;
+#+end_src
+
+Real power, data and method related to variants.
+
+#+begin_src 
+enum DispenserItem {
+  Empty,
+  Ammo(u8),
+  Things(String, i32),
+  Place { x: i32, y: i32 }
+}
+
+// one can implement functions and methods for an enum
+impl DispenserItem {
+  fn display(&self) { }
+}
+
+let item = DispenserItem::Things("thing", 1);
+#+end_src
+
+Generic enums:
+
+#+begin_src
+// to handle nulls...
+enum Option<T> {
+  Some(T),
+  None,
+}
+#+end_src
+
+Patterns:
+
+#+begin_src
+if let Some(x) = my_variable {
+  println!("value is {}", x); // only executed if Some(x) is true
+}
+
+// better to handle multiple matches
+match my_variable {
+  Some(x) => {
+    // print..
+  },
+  None => {
+    // print..
+  }
+}
+
+// _ => {} // will match anything, default or anything else branch
+#+end_src
+
+#+begin_src
+let x = match my_variable {
+  Some(x) => x.squared() + 1,
+  None => 42,
+}; // notice the semi-colon at the end, since it's an expression
+#+end_src
+
+*Special Enums*
+
+*Options*
+
+Prelude, std library always in the scope by default.
+
+let mut x = None; // or Option<i32> = None;
+x = Some(5); // will infer the datatype
+x.is_some(); // true
+x.is_none(); // false
+for i in x {
+  // print i // will print 5
+}
+
+Q: add link to the official documentation;
+
+*Result*
+
+#+begin_src
+#[must_use] // annotation makes it a compiler warning to silently drop a result
+enum Result<T, E> {
+  Ok(T),
+  Err(E),
+}
+#+end_src
+
+Used a lot in I/O operations.
+
+#+begin_src
+use std::fs::File;
+
+fn main() {
+  let res = File::open("foo");
+  let f = res.unwrap(); // ok, return file, err, crashes
+  lef f = res.except("there's some error"); // same as unwrap, add message in case of crash
+
+  if res.is_ok() {
+    let f = res.unwrap();
+  }
+
+  // pattern matching
+  match res {
+    Ok(f) => { ... },
+    Err(e) => { ... },
+  }
+}
+#+end_src
+
+
+** Closures
+
+Closer, functional program, iterators, spawn a thread, etc.
+
+A closure is an anonymous function that can borrow or capture some data from the
+scope it is nested.
+
+#+begin_src
+let add = |x, y| { x + y }
+|| {} // empty closure
+#+end_src
+
+Will borrow references, e.g.:
+
+#+begin_src
+let s = "s".to_string();
+let f = || { ... print s... }
+f(); // prints "s"
+#+end_src
+
+This is ok, if the clouse will not outlive the variable that is referencing
+but the compiler wont let us send this to another thread because another thread
+might live longer than this thread.
+
+Closure supports move semantics, we can force the closure to move any variable
+it uses into and take ownership of them, so we can move the closure to another
+thread.
+
+Closure example:
+
+#+begin_src
+let mut v = vec![ 1, 2, 3 ];
+
+v.iter()
+  .map( |x| x * 3)
+  .filer( |x| *x > 10)
+  .fold(0, |acc, x| acc + x); // folds a structure into a value
+#+end_src
+
+
+** Threads
+
+Threads are portable, will work in Linux, MacOs, etc..
+
+#+begin_src
+use std::thread;
+let handle = thread::spawn(move || {
+  // do something...
+});
+handle.joint.unwrap();
+#+end_src
+
+Use async/await while waiting network or disk I/O.
+
+Q: review async/await
+Q: mutex?
+Q: barriers?
+Q: futures?
+Q: shared mem?
+Q: a mroe extensive tutorial...
+
+
+** Others
+
+- #[derive(Debug))] // what is this shit.
+- (&mut self: Self) // to edit the value of self?? test this.
+- exceptions ?
+- dyn :??
+
+** Offtopic
+
+Q: iterators v/s indexed
+Q: refence (c++) v/s bind (python) 
+Q: https://doc.rust-lang.org/book/ch19-01-unsafe-rust.html
