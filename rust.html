@@ -1,0 +1,1482 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-01-09 Sun 06:36 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org7cb51c4">1. Rust</a>
+<ul>
+<li><a href="#org9d71aeb">1.1. Cargo</a></li>
+<li><a href="#orga176aba">1.2. Variables</a></li>
+<li><a href="#org8bdadf0">1.3. Scope</a></li>
+<li><a href="#org1211167">1.4. Memory Safey</a></li>
+<li><a href="#org0bef65e">1.5. Functions</a></li>
+<li><a href="#orged93b1f">1.6. Module System</a></li>
+<li><a href="#org124b25c">1.7. Scalar Types</a></li>
+<li><a href="#org37d111f">1.8. Compound Types</a></li>
+<li><a href="#org66b8ef1">1.9. Control Flows</a></li>
+<li><a href="#org80caef6">1.10. Strings</a></li>
+<li><a href="#org65316bb">1.11. Ownership</a></li>
+<li><a href="#org54c6b7f">1.12. References and Borrowing</a></li>
+<li><a href="#orgcf4733b">1.13. Structs</a></li>
+<li><a href="#orgf6eb2a2">1.14. Traits</a></li>
+<li><a href="#org1ac15cc">1.15. Collections</a></li>
+<li><a href="#org803197b">1.16. Enums</a></li>
+<li><a href="#orgd778241">1.17. Closures</a></li>
+<li><a href="#orgb07852a">1.18. Threads</a></li>
+<li><a href="#orge17146b">1.19. Others</a></li>
+<li><a href="#org6356937">1.20. Offtopic</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org7cb51c4" class="outline-2">
+<h2 id="org7cb51c4"><span class="section-number-2">1</span> Rust</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org9d71aeb" class="outline-3">
+<h3 id="org9d71aeb"><span class="section-number-3">1.1</span> Cargo</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Cargo is a package manager, builder, test runner and document generator.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">cargo new hello
+</pre>
+</div>
+
+<p>
+Will create a hello project, along with cargo.toml, which is the project
+configuration.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">cargo run
+</pre>
+</div>
+
+<p>
+Will compile the debug version by default, "&#x2013;release" will produce the release
+version without debugging symbols.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">cargo run --release
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orga176aba" class="outline-3">
+<h3 id="orga176aba"><span class="section-number-3">1.2</span> Variables</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+Rust is a braced language, it end sentences with ; (semi-colon), it is also a
+strongly typed language, but it can infer type variables based on the value:
+</p>
+
+<pre class="example">
+let a = 2;
+let b: i32 = 2;
+let (c,d) = (1,2)
+</pre>
+
+<p>
+Variables are immutable by default in rust, for safety, concurrency and speed,
+but it can be declared as mutable too.
+</p>
+
+<pre class="example">
+let mut a = 0;
+a = 1;
+</pre>
+
+<p>
+Constant variables are often uppercased, can be set out the module scope, e.g.:
+global.
+</p>
+
+<pre class="example">
+const PI: f64 = 3.14;
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-org8bdadf0" class="outline-3">
+<h3 id="org8bdadf0"><span class="section-number-3">1.3</span> Scope</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+Variables can be shadowed, re-declared within a specific scope.
+</p>
+
+<pre class="example">
+fn main() {
+  let x = 0;
+  {
+      let a = 1;
+      println!("{}", a);
+  }
+}
+</pre>
+
+<p>
+Variables can be shadowed within the same scope, e.g.: change mutable variable
+to immutable.
+</p>
+
+<pre class="example">
+let mut a = 0;
+let a = 1;
+</pre>
+
+<p>
+Shadow variable with a diferent type value.
+</p>
+
+<pre class="example">
+let a = 0;
+let a = "1";
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-org1211167" class="outline-3">
+<h3 id="org1211167"><span class="section-number-3">1.4</span> Memory Safey</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+It guarantees memory safety at compile time. This code guarantees that the
+compiler will know that the variable was defined either way of the if-statement.
+</p>
+
+<pre class="example">
+let a: i32;
+if true {
+    a = 1;
+} else {
+    a = 0;
+}
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-org0bef65e" class="outline-3">
+<h3 id="org0bef65e"><span class="section-number-3">1.5</span> Functions</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+Use snake<sub>case</sub> for function names, functions don't need to be declared/defined
+before its caller.
+</p>
+
+<pre class="example">
+fn fun(a: f64, b: f64) -&gt; f64 {
+    // return a + b
+    a + b // "tail expression"
+}
+</pre>
+
+<p>
+It doesn't support named arguments, one needs to provide all the arguments in
+order.
+</p>
+
+<p>
+It doesn't support variable number of arguments.
+</p>
+
+<p>
+It doesn't support different types for the same arguments.
+</p>
+
+<p>
+Macros ends with an exclamation point, e.g.: println!
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orged93b1f" class="outline-3">
+<h3 id="orged93b1f"><span class="section-number-3">1.6</span> Module System</h3>
+<div class="outline-text-3" id="text-1-6">
+<p>
+All items in a library are private by default.
+</p>
+
+<p>
+hello/cargo.toml
+</p>
+
+<p>
+hello/src/lib.rs
+</p>
+<pre class="example">
+fn fun1() { println("fun1"); } // private
+pub fn fun2() { println("func2"); } // public
+</pre>
+
+<p>
+hello/src/main.rs
+</p>
+<pre class="example">
+use hello::func2;
+use std::collection::HashMap
+
+fn main() {
+    hello::fun1(); // error
+    func2(): // ok
+}
+</pre>
+
+<p>
+Check rust std API and crates.io for packages.
+</p>
+
+<p>
+Adding packages in cargo.toml
+</p>
+
+<pre class="example">
+...
+[dependencies]
+package = "100.10.1"
+</pre>
+
+<p>
+Q: Same functions within the same module?, what's the scope?
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org124b25c" class="outline-3">
+<h3 id="org124b25c"><span class="section-number-3">1.7</span> Scalar Types</h3>
+<div class="outline-text-3" id="text-1-7">
+<p>
+There are four scalar types: integers, floats, booleas and characters.
+</p>
+
+<p>
+<b>Integers</b>
+</p>
+
+<p>
+unsigned u8, u16, &#x2026; u128, usize
+signed i8, i16, &#x2026; i128, isize
+</p>
+
+<p>
+Sizes cross-platform consistent, usize and isize represents the pointer platform
+size (same bit number of the target platform), can hold memory addresses and
+array indexes.
+</p>
+
+<p>
+By default, i32 is set when the compiler infer the variable type.
+</p>
+
+<p>
+No all integers are supported in all platforms, it depends on the platform
+architecture, e.g.: 16 bits machines.
+</p>
+
+<p>
+<b>Integers Literals</b>
+</p>
+
+<ul class="org-ul">
+<li>Decimal 10</li>
+<li>Hex 0x</li>
+<li>Octal 0o</li>
+<li>Binary 0b</li>
+<li>Byte (u8 only) b'A' (utf-char in ascii range)</li>
+</ul>
+
+<p>
+These support underscores to readability.
+</p>
+
+<p>
+<b>Floating</b>
+</p>
+
+<p>
+f32 and f64 (default because it has more precision, slow on other architectures
+e.g.: 32 bits.
+</p>
+
+<p>
+Q: review single and double precision (check also IEEE-754)
+</p>
+
+<p>
+Floating point literals, follows IEEE-754, no special sufixes required,
+not valid: .1, valid: 0.1.
+</p>
+
+<p>
+<b>Sufixes</b>
+</p>
+
+<pre class="example">
+let a: u16 = 1;
+let b: f32 = 0.1;
+</pre>
+
+<p>
+same as
+</p>
+
+<pre class="example">
+let a = 1u16;
+let b = 0.1f32;
+</pre>
+
+<p>
+same as
+</p>
+
+<pre class="example">
+let a = 1_u16;
+let b = 0.1_f32;
+</pre>
+
+<p>
+this is useful to pass a numeric literal to a generic function that could
+accept multiple numeric types.
+</p>
+
+<p>
+<b>Boolean</b>
+</p>
+
+<p>
+bool, true or false, are not integers, no arithmetic on them, unless to cast
+them to some integers.
+</p>
+
+<pre class="example">
+true as u8
+false as u8
+</pre>
+
+<p>
+<b>Character</b>
+</p>
+
+<p>
+char, single unicode scalare value, any character, are 4 bytes (32 bits) long,
+a char array  makes a UCS-4 or UTF-32 strings, literals are surrounded by single
+quotes, strings are UTF-8 and characters are not, string do not used chars
+internally, sources are UTF-8, so chars defined in a UTF-8 source file are going
+to be UTF-8 strings and not really chars.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org37d111f" class="outline-3">
+<h3 id="org37d111f"><span class="section-number-3">1.8</span> Compound Types</h3>
+<div class="outline-text-3" id="text-1-8">
+<p>
+<b>Tuples</b>
+</p>
+
+<p>
+Multiple values of other and different types in one type.
+</p>
+
+<pre class="example">
+let a = (1, "one")
+let (c,d) = a
+</pre>
+
+<pre class="example">
+let a: (u8, f63, i32) = (0, 0.1, 10)
+let a1 = a.0
+let a1 = a.1
+</pre>
+
+<p>
+Tuple has a max. arity of 12, more than that you can
+still use the touple with limited functionality.
+</p>
+
+<p>
+Arity, how many items of a touple has.
+</p>
+
+<p>
+<b>Arrays</b>
+</p>
+
+<p>
+Multiple values of the same type, arr are limited to 32 elements, above that
+size it loose functionality, they live on the stack and are fixed size.
+</p>
+
+<pre class="example">
+let arr = [ 0, 0, 0 ];
+let arr = [ 0; 3 ];
+let arr: [u8; 3] = [ 0, 0, 0 ];
+let a = arr[0]
+</pre>
+
+<p>
+<b>Vectors</b>
+</p>
+
+<p>
+??
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org66b8ef1" class="outline-3">
+<h3 id="org66b8ef1"><span class="section-number-3">1.9</span> Control Flows</h3>
+<div class="outline-text-3" id="text-1-9">
+<pre class="example">
+if a == 0 {
+     b = "zero";
+} else if  a == 1 {
+     b = "one";
+} else {
+     b = "other";
+}
+</pre>
+
+<p>
+If's is an expression not an statement, expressions returns a value, statement
+don't.
+</p>
+
+<p>
+No semi-colon, it uses tail expresions to return the value and all the blocks
+should return the same type, braces not optional.
+</p>
+
+<pre class="example">
+b = if a == 0 {
+     "zero"
+} else if  a == 1 {
+     "one"
+} else {
+     "other"
+};
+</pre>
+
+<p>
+<b>Loop</b>
+</p>
+
+<p>
+Unconditional loops support labels:
+</p>
+
+<pre class="example">
+loop {
+    break;
+}
+</pre>
+
+<pre class="example">
+'loop_a: loop {
+    loop {
+	// break 'loop_a;
+	// continue 'loop_a;
+    }
+}
+</pre>
+
+<p>
+Rust doesn't coerce expressions to booleans.
+</p>
+
+<pre class="example">
+while some_function() {
+    // loop ends when some_function() evaluates to false
+}
+</pre>
+
+<p>
+The code before, is sugar-sintax for:
+</p>
+
+<pre class="example">
+loop {
+    if !some_function() { break }
+    // some code...
+}
+</pre>
+
+<p>
+An emulated do-while would be:
+</p>
+
+<pre class="example">
+loop {
+    // some code...
+    if !some_function() { break }
+}
+</pre>
+
+<p>
+Rust iterates over any iterable value
+</p>
+
+<pre class="example">
+for a in [ 1, 2 ,3 ].iter() {
+     // some code...
+}
+</pre>
+
+<p>
+One can stack methods, like map, filter and fold, they will be lazy-evaluated.
+</p>
+
+<p>
+Like python, it can destructure items and bind them to variables, e.g.:
+</p>
+
+<pre class="example">
+for (a, b) in [(0,1) (0,2)].iter() {
+     // some code...
+}
+</pre>
+
+<p>
+Ranges, e.g.:
+</p>
+
+<pre class="example">
+for a in 0..10 {
+    // 0 to 9
+    // some code...
+}
+
+for a in 0..=10 {
+    // 0 to 10
+    // some code...
+}
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-org80caef6" class="outline-3">
+<h3 id="org80caef6"><span class="section-number-3">1.10</span> Strings</h3>
+<div class="outline-text-3" id="text-1-10">
+<p>
+There's 6 types of string in the rust std library.
+</p>
+
+<p>
+str, which is string-slice, &amp;str is a borrowed string-slice, a literal string
+is always a borrowed string-slice, e.g.: let a = "string";
+</p>
+
+<p>
+&amp;str, is often refered as string, the data can't be modified.
+</p>
+
+<p>
+String, data can be modified.
+</p>
+
+<pre class="example">
+let somestr = "string".to_string(); // create a string from a borrowed string slice
+let somestr = String::from("string");
+</pre>
+
+<ul class="org-ul">
+<li>String, pointer to bytes, length and a capacity</li>
+<li>&amp;str (borrowed string-slice) pointer to bytes and length, which can be seen
+as a subset of a String.</li>
+</ul>
+
+<p>
+Both types are UTF-8.
+</p>
+
+<p>
+Can't be index by character position, in favor to support different languages,
+review UTF-8 and unicode.
+</p>
+
+<p>
+Unicode scalars can be represented by 1, 2, 3 or 4 bytes, e.g.: graphemes.
+</p>
+
+<p>
+One can index with:
+</p>
+
+<pre class="example">
+word.bytes() // vector of UTF-8 bytes, works ok with english-ascii
+word.chars() // unicode scalars iterator
+// unicode-segmentation // that return iterators that handle graphemes
+//
+// all of them constant access operations
+</pre>
+
+<p>
+There's a bunch of methos to handle strings, e.g. lines(), truncate(), etc.
+</p>
+
+<p>
+Iterators provides the nth() method, which one can index.
+</p>
+
+<p>
+Q: test let mut a: String, to check if the reference is mutable or is the cont.
+Q: review UTF-8
+Q: review unicode
+Q: ascii
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org65316bb" class="outline-3">
+<h3 id="org65316bb"><span class="section-number-3">1.11</span> Ownership</h3>
+<div class="outline-text-3" id="text-1-11">
+<ol class="org-ol">
+<li>each value has an owner</li>
+<li>one owner of a value, which can borrow the value</li>
+<li>owner gets out of scope, value gets droped</li>
+</ol>
+
+<pre class="example">
+let a = String::from("string");
+let b = a;
+println("{}", a); // will produce an error since value is owned now by b
+</pre>
+
+<pre class="example">
+let a = String::from("string"); // *ptr stored in heap, len/capacity in stack
+let b = a.clone(); // copy, when only stack data is copied
+</pre>
+
+<p>
+In other languages, a clone is called a deep-copy.
+</p>
+
+<p>
+When a value is droped, if there's a destructure, it's inmediatly executed:
+</p>
+
+<ol class="org-ol">
+<li>Destructor</li>
+<li>Free Heap</li>
+<li>Pop Stack</li>
+</ol>
+
+<p>
+Passing it to a function:
+</p>
+
+<pre class="example">
+let a = String::from("string");
+fn func(a: String) {}
+func(a); // now the function is the owner
+println!("{}", a); // error, func is the "a" owner
+</pre>
+
+<p>
+One can do this to get back the ownership of the variable, not-ideal, check
+reference and borrowing.
+</p>
+
+<pre class="example">
+let mut a = String::from("string");
+fn func(a: String) -&gt; String { a };
+a = func(a)
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-org54c6b7f" class="outline-3">
+<h3 id="org54c6b7f"><span class="section-number-3">1.12</span> References and Borrowing</h3>
+<div class="outline-text-3" id="text-1-12">
+<p>
+A referenc cannot outlive it's refered value, no reference to null is allowed.
+</p>
+
+<p>
+Reference, "a" keeps the ownership, only reference of "a" is passed to the
+function, it is like the ownership of the reference is passed to the function,
+so when the function ends its execution, the reference it's droped, not the
+value, which is like pointer.
+</p>
+
+<pre class="example">
+let a: String = String::from("string");
+fn func(a: &amp;String) {}
+func(&amp;a);
+</pre>
+
+<p>
+A reference is like a pointer to the variable, like c/c++.
+</p>
+
+<p>
+A reference is always immutable, even though the variable is mutable, we can
+make a mutable reference to a mutable value to change the value as well.
+</p>
+
+<pre class="example">
+let mut a: String = String::from("string");
+func(&amp;mut a);
+fn func(a: &amp;mut String) {
+  a.insert_str(0, "..."); // the dot dereference automatically
+  (*a).insert_str(0, "..."); // it dereference (manually)
+  *a = String::from("replacing the string...");
+}
+</pre>
+
+<ul class="org-ul">
+<li>x: &amp;mut i32, *x, it gives access to a mutable value</li>
+<li>x: &amp;i32, *x, it gives access to an immutable value</li>
+</ul>
+
+<p>
+It can only exists either, enforced by the compiler:
+</p>
+
+<ul class="org-ul">
+<li>1 mutable reference</li>
+<li>N immutable references</li>
+</ul>
+
+<p>
+Q: mutable reference to a immutable value?.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgcf4733b" class="outline-3">
+<h3 id="orgcf4733b"><span class="section-number-3">1.13</span> Structs</h3>
+<div class="outline-text-3" id="text-1-13">
+<p>
+In other languages you have classes, in rust we have structs.
+</p>
+
+<p>
+Can have datafields, methods and associative functions.
+</p>
+
+<pre class="example">
+struct MyStruct {
+    field1: bool,
+    field2: u8,
+}
+
+// instantiate
+// every single field needs a value
+let mystruct = MyStruct {
+    field1: true,
+    field2: 1,
+}
+</pre>
+
+<p>
+With a constructor, e.g.: to have default values.
+</p>
+
+<pre class="example">
+impl MyStruct {
+    fn new() -&gt; Self { // new is an associative function of the struct
+	Self {
+	    field1: true,
+	    field2: 1,
+	}
+    }
+}
+
+let mystruct = MyStruct::new(); // invokes an associative function of the struct
+let field1 = mystruct.field1;
+mystruct.field2 = 0;
+mystruct.func();
+</pre>
+
+<p>
+Methods can also be defined in the implementation block, e.g.:
+</p>
+
+<pre class="example">
+impl MyStruct {
+   // associated function
+   fn function() ...
+   // methods
+   fn move(self) ...
+   fn borrow(&amp;self) ...
+   fn mut_borrow(&amp;mut self) ...
+}
+</pre>
+
+<p>
+Q: mutable in struct methods, self as a mutable?
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgf6eb2a2" class="outline-3">
+<h3 id="orgf6eb2a2"><span class="section-number-3">1.14</span> Traits</h3>
+<div class="outline-text-3" id="text-1-14">
+<p>
+Similar to interfaces in other languages, composition over inheritance.
+</p>
+
+<pre class="example">
+struct RedFox {
+  enemy: bool,
+  life: u32,
+}
+
+trait Noisy {
+  fn get_noise(&amp;self) -&gt; &amp;str;
+}
+
+impl Noise for RedFox {
+  fn get_noise(&amp;self) -&gt; &amp;str { "meow?" }
+}
+</pre>
+
+<p>
+We could have implement the trait method in the struct directly, but if we use
+traits:
+</p>
+
+<ul class="org-ul">
+<li>we can use generic functions that accept any values that implements the
+traits</li>
+</ul>
+
+<pre class="example">
+fn print_noise&lt;T: Noisy&gt;(item: T) {
+  println!("{}", item.get_noise));
+}
+</pre>
+
+<p>
+The above accepts a item type T, which is defined to be anything that implements
+the Noisy trait, it can use any behaviour on item that the Noise trait defines.
+</p>
+
+<p>
+So, we have a generic function that can take any timpoe as long it satisfies the
+Noisy trait, this is like, in java:
+</p>
+
+<pre class="example">
+interface MyInterface {
+   void a&lt;ethod();
+}
+
+class MyClass implements MyInterface {
+   public aMethod() { }; 
+}
+
+class Main {
+
+   // this mimics what the trait in rust does.
+   public static void example(MyInterface myInterface) {
+       myInterface.aMethod();
+   }
+
+   public static void main(String args[]) {
+       example(new MyClass());
+   }
+}
+</pre>
+
+<p>
+One can implement any trait on any struct, including any types or builtins, e.g.:
+</p>
+
+<pre class="example">
+impl Noisy for u8 {
+  fn get_noise(&amp;self) -&gt; &amp;str { "BYTE" }
+}
+
+fn main() {
+  print_noise(5_u8); // prints bytes
+}
+</pre>
+
+<p>
+There's a special trait called "copy", if the type implements copy, then
+the type will be copied instead of moved in move situations, this make sense
+o small values that fit on the stack, like small integers, booleans, etc..
+implements copy. If the type uses heap, it cannot implement copy. You can opt-in
+implementing copy with your own type if your type only uses other copy types.
+</p>
+
+<p>
+Traits implement inheritance, and one can have default trait behavior, e.g.:
+</p>
+
+<pre class="example">
+trait Run {
+  fn run(&amp;self) {
+    println!("I'm running");
+  }
+}
+
+struct Robot {}
+impl Run for Robot {}
+</pre>
+
+<p>
+No fields part of traits, set getter and setter methods on the traits as a
+workaround.
+</p>
+
+<p>
+Q: return references?
+Q: know whether the memory is stored on the heap or in the stack.
+Q: diamond pattern
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org1ac15cc" class="outline-3">
+<h3 id="org1ac15cc"><span class="section-number-3">1.15</span> Collections</h3>
+<div class="outline-text-3" id="text-1-15">
+<p>
+<b>Vectors</b>
+</p>
+
+<p>
+Vec&lt;T&gt; of one type only, as any other language:
+</p>
+
+<pre class="example">
+let mut v: Vec&lt;i32&gt; = Vec::new();
+v.push(1);
+v.push(2);
+let x = v.pop();
+</pre>
+
+<pre class="example">
+// vec! mcros
+let mut v = vec![ 1, 2, 3]
+</pre>
+
+<p>
+<b>HashMap</b>
+</p>
+
+<pre class="example">
+let mut h: HashMap&lt;u8, bool&gt; = HashMap::new();
+h.insert(0, false);
+h.insert(1, true);
+let value = h.remove(&amp;1).unwrap(); // returns an enum
+</pre>
+
+<p>
+<b>Others</b>
+</p>
+
+<ul class="org-ul">
+<li>HashSet</li>
+<li>VecDeque</li>
+<li>LinkedList</li>
+<li>BinaryHeap</li>
+<li>BTreeSet</li>
+<li>BTreeMap</li>
+</ul>
+
+<p>
+Q: add description
+Q: other collections
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org803197b" class="outline-3">
+<h3 id="org803197b"><span class="section-number-3">1.16</span> Enums</h3>
+<div class="outline-text-3" id="text-1-16">
+<p>
+Enums in rust are more like algebraic data types in haskell than c-like enums.
+</p>
+
+<pre class="example">
+enum Color {
+  Red,
+  Green,
+  Blue,
+}
+
+let color = Color::Red;
+</pre>
+
+<p>
+Real power, data and method related to variants.
+</p>
+
+<pre class="example">
+enum DispenserItem {
+  Empty,
+  Ammo(u8),
+  Things(String, i32),
+  Place { x: i32, y: i32 }
+}
+
+// one can implement functions and methods for an enum
+impl DispenserItem {
+  fn display(&amp;self) { }
+}
+
+let item = DispenserItem::Things("thing", 1);
+</pre>
+
+<p>
+Generic enums:
+</p>
+
+<pre class="example">
+// to handle nulls...
+enum Option&lt;T&gt; {
+  Some(T),
+  None,
+}
+</pre>
+
+<p>
+Patterns:
+</p>
+
+<pre class="example">
+if let Some(x) = my_variable {
+  println!("value is {}", x); // only executed if Some(x) is true
+}
+
+// better to handle multiple matches
+match my_variable {
+  Some(x) =&gt; {
+    // print..
+  },
+  None =&gt; {
+    // print..
+  }
+}
+
+// _ =&gt; {} // will match anything, default or anything else branch
+</pre>
+
+<pre class="example">
+let x = match my_variable {
+  Some(x) =&gt; x.squared() + 1,
+  None =&gt; 42,
+}; // notice the semi-colon at the end, since it's an expression
+</pre>
+
+<p>
+<b>Special Enums</b>
+</p>
+
+<p>
+<b>Options</b>
+</p>
+
+<p>
+Prelude, std library always in the scope by default.
+</p>
+
+<p>
+let mut x = None; <i>/ or Option&lt;i32&gt; = None;
+x = Some(5); /</i> will infer the datatype
+x.is<sub>some</sub>(); <i>/ true
+x.is<sub>none</sub>(); /</i> false
+for i in x {
+  <i>/ print i /</i> will print 5
+}
+</p>
+
+<p>
+Q: add link to the official documentation;
+</p>
+
+<p>
+<b>Result</b>
+</p>
+
+<pre class="example">
+#[must_use] // annotation makes it a compiler warning to silently drop a result
+enum Result&lt;T, E&gt; {
+  Ok(T),
+  Err(E),
+}
+</pre>
+
+<p>
+Used a lot in I/O operations.
+</p>
+
+<pre class="example">
+use std::fs::File;
+
+fn main() {
+  let res = File::open("foo");
+  let f = res.unwrap(); // ok, return file, err, crashes
+  lef f = res.except("there's some error"); // same as unwrap, add message in case of crash
+
+  if res.is_ok() {
+    let f = res.unwrap();
+  }
+
+  // pattern matching
+  match res {
+    Ok(f) =&gt; { ... },
+    Err(e) =&gt; { ... },
+  }
+}
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-orgd778241" class="outline-3">
+<h3 id="orgd778241"><span class="section-number-3">1.17</span> Closures</h3>
+<div class="outline-text-3" id="text-1-17">
+<p>
+Closer, functional program, iterators, spawn a thread, etc.
+</p>
+
+<p>
+A closure is an anonymous function that can borrow or capture some data from the
+scope it is nested.
+</p>
+
+<pre class="example">
+let add = |x, y| { x + y }
+|| {} // empty closure
+</pre>
+
+<p>
+Will borrow references, e.g.:
+</p>
+
+<pre class="example">
+let s = "s".to_string();
+let f = || { ... print s... }
+f(); // prints "s"
+</pre>
+
+<p>
+This is ok, if the clouse will not outlive the variable that is referencing
+but the compiler wont let us send this to another thread because another thread
+might live longer than this thread.
+</p>
+
+<p>
+Closure supports move semantics, we can force the closure to move any variable
+it uses into and take ownership of them, so we can move the closure to another
+thread.
+</p>
+
+<p>
+Closure example:
+</p>
+
+<pre class="example">
+let mut v = vec![ 1, 2, 3 ];
+
+v.iter()
+  .map( |x| x * 3)
+  .filer( |x| *x &gt; 10)
+  .fold(0, |acc, x| acc + x); // folds a structure into a value
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-orgb07852a" class="outline-3">
+<h3 id="orgb07852a"><span class="section-number-3">1.18</span> Threads</h3>
+<div class="outline-text-3" id="text-1-18">
+<p>
+Threads are portable, will work in Linux, MacOs, etc..
+</p>
+
+<pre class="example">
+use std::thread;
+let handle = thread::spawn(move || {
+  // do something...
+});
+handle.joint.unwrap();
+</pre>
+
+<p>
+Use async/await while waiting network or disk I/O.
+</p>
+
+<p>
+Q: review async/await
+Q: mutex?
+Q: barriers?
+Q: futures?
+Q: shared mem?
+Q: a mroe extensive tutorial&#x2026;
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orge17146b" class="outline-3">
+<h3 id="orge17146b"><span class="section-number-3">1.19</span> Others</h3>
+<div class="outline-text-3" id="text-1-19">
+<ul class="org-ul">
+<li>#[derive(Debug))] // what is this shit.</li>
+<li>(&amp;mut self: Self) // to edit the value of self?? test this.</li>
+<li>exceptions ?</li>
+<li>dyn :??</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org6356937" class="outline-3">
+<h3 id="org6356937"><span class="section-number-3">1.20</span> Offtopic</h3>
+<div class="outline-text-3" id="text-1-20">
+<p>
+Q: iterators v/s indexed
+Q: refence (c++) v/s bind (python) 
+Q: <a href="https://doc.rust-lang.org/book/ch19-01-unsafe-rust.html">https://doc.rust-lang.org/book/ch19-01-unsafe-rust.html</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2022-01-09 Sun 06:36</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
